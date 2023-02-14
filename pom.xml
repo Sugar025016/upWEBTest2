@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.3</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.example</groupId>
+    <artifactId>upWEBTest</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>upWEBTest</name>
+    <description>upWEBTest</description>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+<!--    設定打包方式-->
+    <packaging>war</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+<!--        為什麼前一步驟包出來的 jar 檔可以直接透過 java -jar 方式跑 web 程式，其實就是因為內建了 Tomcat 所需的一些函式庫-->
+<!--        不過當我們打包成 war 檔時，這些函式庫反而會跟 server 起衝突，因此需將其更改為 “provided”-->
+<!--        provided：當運行時，表示此jar檔期望由JDK、Tomcat及jboss等來提供。如 servlet.jar、jsp-api.jar 等。-->
+<!--        部署時將不會打包到jar/war裡面。-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
